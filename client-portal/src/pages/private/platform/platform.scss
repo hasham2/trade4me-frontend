@@ -1,0 +1,23 @@
+.platformWrapper {
+  display: flex;
+  .trade-section {
+    margin-left: 106px;
+  }
+}
+.ml-106 {
+  margin-left: 106px;
+  .ant-drawer-wrapper-body {
+    background: #08090a;
+  }
+  .ant-drawer-header-title {
+    flex-direction: row-reverse;
+  }
+  .ant-drawer-title {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  p {
+    color: #fff;
+  }
+}

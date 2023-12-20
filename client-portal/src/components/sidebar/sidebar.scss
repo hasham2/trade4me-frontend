@@ -1,0 +1,64 @@
+.sidebar {
+  width: 106px;
+  position: fixed;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #2b2d35;
+  background: #14161a;
+  justify-content: space-between;
+  padding: 2.5rem 0rem 6.25rem 0rem;
+  align-items: center;
+  z-index: 10000;
+  .top {
+    display: flex;
+    flex-direction: column;
+    gap: 3.25rem;
+    button {
+      color: #9cb0c2;
+      background-color: transparent;
+      cursor: pointer;
+    }
+    button:hover {
+      color: #fff;
+      transition: 0.3s ease-in;
+      svg {
+        path {
+          fill: #fff;
+          transition: 0.3s ease-in;
+        }
+      }
+      svg.trades {
+        path {
+          stroke: #fff;
+          transition: 0.3s ease-in;
+        }
+      }
+    }
+    button.active {
+      color: #0094ff;
+      svg {
+        path {
+          fill: #0094ff;
+        }
+      }
+      svg.trades {
+        path {
+          stroke: #0094ff;
+        }
+      }
+    }
+  }
+  .bottom {
+    justify-self: flex-end;
+    .online {
+      text-align: center;
+      p.numberOnline {
+        color: #fff;
+      }
+      p.onl {
+        color: #9cb0c2;
+      }
+    }
+  }
+}
