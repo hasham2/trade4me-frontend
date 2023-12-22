@@ -1,0 +1,83 @@
+.topbarContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 2.75rem;
+  .conversionTab {
+    display: flex;
+    gap: 0.81rem;
+    align-items: center;
+    padding: 8px 12px;
+    cursor: pointer;
+    .convDetails {
+      .topConv {
+        display: flex;
+        gap: 0.38rem;
+        align-items: center;
+        font-size: 1.125rem;
+        span {
+          color: #fff;
+        }
+        span.percent {
+          color: #0286e5;
+        }
+        span.caretDown {
+          padding-top: 3px;
+        }
+      }
+      .bottomConv {
+        color: #9cb0c2;
+        font-size: 0.8125rem;
+      }
+    }
+  }
+  .conversionTab:hover {
+    background: #5e697852;
+    border-radius: 5px;
+  }
+  .payProfileTab {
+    display: flex;
+    align-items: center;
+    gap: 3.5rem;
+    .demo {
+      padding: 8px 12px;
+      padding-top: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+      p.value {
+        color: #fff;
+        font-size: 1.125rem;
+      }
+      .flexDemo {
+        display: flex;
+        align-items: center;
+        span.dem {
+          color: #e7a82c;
+          font-size: 0.8125rem;
+        }
+        span.caretDown {
+          padding-top: 3px;
+        }
+      }
+    }
+    .demo:hover {
+      background: #5e697852;
+      border-radius: 5px;
+    }
+    button.payments {
+      border-radius: 0.5rem;
+      background: #0094ff;
+      color: #ffffff;
+      padding: 0.9375rem 0.75rem;
+      font-size: 1.125rem;
+      font-weight: 500;
+    }
+    button.profile {
+      background: #1f2227;
+      padding: 0.75rem;
+      border-radius: 100%;
+    }
+  }
+}

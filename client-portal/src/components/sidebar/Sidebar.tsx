@@ -10,9 +10,11 @@ import "./sidebar.scss";
 interface SidebarProps {
   setIsDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isDrawerOpen: boolean;
-  currentDrawer: "trades" | "market" | "events" | "help" | null;
+  currentDrawer: "trades" | "market" | "events" | "help" | "convert" | null;
   setCurrentDrawer: React.Dispatch<
-    React.SetStateAction<"trades" | "market" | "events" | "help" | null>
+    React.SetStateAction<
+      "trades" | "market" | "events" | "help" | "convert" | null
+    >
   >;
 }
 

@@ -1,7 +1,21 @@
 .platformWrapper {
   display: flex;
+  background: #0e0f12;
   .trade-section {
     margin-left: 106px;
+    background: #0e0f12;
+    width: 100%;
+    height: 100vh;
+    .trade-content {
+      display: flex;
+      .trade-graph {
+        width: 86%;
+        height: 90vh;
+      }
+    }
+  }
+  .ml-378 {
+    margin-left: 484px;
   }
 }
 .ml-106 {
@@ -19,5 +33,18 @@
   }
   p {
     color: #fff;
+  }
+}
+.rightDrawer {
+  .ant-drawer-wrapper-body {
+    background: #0e0f12;
+  }
+  .ant-drawer-header-title {
+    flex-direction: row-reverse;
+  }
+  .ant-drawer-title {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 600;
   }
 }

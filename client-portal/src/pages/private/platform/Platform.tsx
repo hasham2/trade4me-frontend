@@ -10,8 +10,12 @@ interface PlatformProps {}
 
 const Platform: React.FunctionComponent<PlatformProps> = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
+  const [isRightDrawerOpen, setIsRightDrawerOpen] = useState<boolean>(false);
+  const [rightDrawerContent, setIsRightDrawerContent] = useState<string | null>(
+    null
+  );
   const [currentDrawer, setCurrentDrawer] = useState<
-    "trades" | "market" | "events" | "help" | null
+    "trades" | "market" | "events" | "help" | "convert" | null
   >(null);
 
   const RenderTradesDrawerContent = () => {
@@ -28,6 +32,22 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
 
   const RenderHelpDrawerContent = () => {
     return <p>Some contents...</p>;
+  };
+
+  const RenderConversionDrawerContent = () => {
+    return <p>conv contents...</p>;
+  };
+
+  const RenderAccountDrawerContent = () => {
+    return <p>account contents...</p>;
+  };
+
+  const RenderPaymentsDrawerContent = () => {
+    return <p>payment contents...</p>;
+  };
+
+  const RenderProfileDrawerContent = () => {
+    return <p>profile contents...</p>;
   };
 
   return (
@@ -49,6 +69,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               ? "Market"
               : currentDrawer === "help"
               ? "Help"
+              : currentDrawer === "convert"
+              ? "Assests"
               : ""
           }
           placement="left"
@@ -70,16 +92,52 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               <RenderEventsDrawerContent />
             ) : currentDrawer === "help" ? (
               <RenderHelpDrawerContent />
+            ) : currentDrawer === "convert" ? (
+              <RenderConversionDrawerContent />
             ) : (
               <></>
             )}
           </div>
         </Drawer>
       )}
-      <div className="trade-section">
-        <Topbar />
+      <div className={isDrawerOpen ? "trade-section ml-378" : "trade-section"}>
+        {isRightDrawerOpen && (
+          <Drawer
+            title={
+              rightDrawerContent === "account"
+                ? "Accounts"
+                : rightDrawerContent === "payments"
+                ? "Payments"
+                : rightDrawerContent === "profile"
+                ? "Profile"
+                : ""
+            }
+            placement="right"
+            onClose={() => setIsRightDrawerOpen(false)}
+            open={isRightDrawerOpen}
+            closeIcon={<CloseIcon />}
+            className="rightDrawer"
+          >
+            {rightDrawerContent === "payments" ? (
+              <RenderPaymentsDrawerContent />
+            ) : rightDrawerContent === "profile" ? (
+              <RenderProfileDrawerContent />
+            ) : rightDrawerContent === "account" ? (
+              <RenderAccountDrawerContent />
+            ) : (
+              <></>
+            )}
+          </Drawer>
+        )}
+        <Topbar
+          setIsRightDrawerOpen={setIsRightDrawerOpen}
+          setIsRightDrawerContent={setIsRightDrawerContent}
+          setIsDrawerOpen={setIsDrawerOpen}
+          setCurrentDrawer={setCurrentDrawer}
+          currentDrawer={currentDrawer}
+        />
         <div className="trade-content">
-          <div className="trade-graph"></div>
+          <div className="trade-graph">ppwwd</div>
           <TradeForm />
         </div>
       </div>
