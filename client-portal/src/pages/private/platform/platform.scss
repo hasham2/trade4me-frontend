@@ -10,7 +10,7 @@
       display: flex;
       .trade-graph {
         width: 86%;
-        height: 90vh;
+        height: stretch;
       }
     }
   }
@@ -47,4 +47,32 @@
     font-size: 2rem;
     font-weight: 600;
   }
+}
+
+:where(.css-dev-only-do-not-override-2rgkd4).ant-tabs-top
+  > .ant-tabs-nav::before,
+:where(.css-dev-only-do-not-override-2rgkd4).ant-tabs-bottom
+  > .ant-tabs-nav::before,
+:where(.css-dev-only-do-not-override-2rgkd4).ant-tabs-top
+  > div
+  > .ant-tabs-nav::before,
+:where(.css-dev-only-do-not-override-2rgkd4).ant-tabs-bottom
+  > div
+  > .ant-tabs-nav::before {
+  border-bottom: 1px solid #545557;
+}
+:where(.css-dev-only-do-not-override-2rgkd4).ant-tabs
+  .ant-tabs-tab.ant-tabs-tab-active
+  .ant-tabs-tab-btn {
+  color: #ffffff;
+}
+:where(.css-dev-only-do-not-override-2rgkd4).ant-tabs .ant-tabs-tab {
+  color: #9fa0a2;
+  font-size: 1.16rem;
+}
+:where(.css-dev-only-do-not-override-2rgkd4).ant-tabs .ant-tabs-tab:hover {
+  color: #fff;
+}
+:where(.css-dev-only-do-not-override-2rgkd4).ant-tabs .ant-tabs-ink-bar {
+  background: #b2b4b8;
 }

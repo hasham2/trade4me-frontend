@@ -5,6 +5,9 @@ import TradeForm from "../../../components/tradeForm/TradeForm";
 import "./platform.scss";
 import { Drawer } from "antd";
 import { CloseIcon } from "../../../assets/icons";
+import TradesMenu from "./platformMenus/trades/TradesMenu";
+import MarketMenu from "./platformMenus/market/MarketMenu";
+import EventsMenu from "./platformMenus/events/EventsMenu";
 
 interface PlatformProps {}
 
@@ -17,18 +20,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const [currentDrawer, setCurrentDrawer] = useState<
     "trades" | "market" | "events" | "help" | "convert" | null
   >(null);
-
-  const RenderTradesDrawerContent = () => {
-    return <p>Trades contents...</p>;
-  };
-
-  const RenderMarketDrawerContent = () => {
-    return <p>Market contents...</p>;
-  };
-
-  const RenderEventsDrawerContent = () => {
-    return <p>Events contents...</p>;
-  };
 
   const RenderHelpDrawerContent = () => {
     return <p>Some contents...</p>;
@@ -85,11 +76,11 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         >
           <div>
             {currentDrawer === "trades" ? (
-              <RenderTradesDrawerContent />
+              <TradesMenu />
             ) : currentDrawer === "market" ? (
-              <RenderMarketDrawerContent />
+              <MarketMenu />
             ) : currentDrawer === "events" ? (
-              <RenderEventsDrawerContent />
+              <EventsMenu />
             ) : currentDrawer === "help" ? (
               <RenderHelpDrawerContent />
             ) : currentDrawer === "convert" ? (
