@@ -9,3 +9,11 @@
 button {
   cursor: pointer;
 }
+.chart-toolbar,
+.chart-controls-bar,
+html.theme-dark .chart-controls-bar {
+  display: none;
+}
+.trade-graph #widget-container {
+  border-color: red !important;
+}

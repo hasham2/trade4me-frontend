@@ -10,7 +10,8 @@
       display: flex;
       .trade-graph {
         width: 86%;
-        height: stretch;
+        height: calc(100vh - 139px);
+        overflow: hidden;
       }
     }
   }

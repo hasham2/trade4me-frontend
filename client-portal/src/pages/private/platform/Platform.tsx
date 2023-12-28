@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Sidebar from "../../../components/sidebar/Sidebar";
 import Topbar from "../../../components/topbar/Topbar";
 import TradeForm from "../../../components/tradeForm/TradeForm";
@@ -8,6 +8,9 @@ import { CloseIcon } from "../../../assets/icons";
 import TradesMenu from "./platformMenus/trades/TradesMenu";
 import MarketMenu from "./platformMenus/market/MarketMenu";
 import EventsMenu from "./platformMenus/events/EventsMenu";
+import HelpMenu from "./platformMenus/help/HelpMenu";
+import PaymentsMenu from "./platformMenus/payments/PaymentsMenu";
+import { AdvancedRealTimeChart } from "react-ts-tradingview-widgets";
 
 interface PlatformProps {}
 
@@ -21,10 +24,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     "trades" | "market" | "events" | "help" | "convert" | null
   >(null);
 
-  const RenderHelpDrawerContent = () => {
-    return <p>Some contents...</p>;
-  };
-
   const RenderConversionDrawerContent = () => {
     return <p>conv contents...</p>;
   };
@@ -33,13 +32,14 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     return <p>account contents...</p>;
   };
 
-  const RenderPaymentsDrawerContent = () => {
-    return <p>payment contents...</p>;
-  };
-
   const RenderProfileDrawerContent = () => {
     return <p>profile contents...</p>;
   };
+
+  useEffect(() => {
+    const res = window.document;
+    console.log(res);
+  });
 
   return (
     <div className="platformWrapper">
@@ -82,7 +82,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             ) : currentDrawer === "events" ? (
               <EventsMenu />
             ) : currentDrawer === "help" ? (
-              <RenderHelpDrawerContent />
+              <HelpMenu />
             ) : currentDrawer === "convert" ? (
               <RenderConversionDrawerContent />
             ) : (
@@ -110,7 +110,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             className="rightDrawer"
           >
             {rightDrawerContent === "payments" ? (
-              <RenderPaymentsDrawerContent />
+              <PaymentsMenu />
             ) : rightDrawerContent === "profile" ? (
               <RenderProfileDrawerContent />
             ) : rightDrawerContent === "account" ? (
@@ -128,7 +128,19 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           currentDrawer={currentDrawer}
         />
         <div className="trade-content">
-          <div className="trade-graph">ppwwd</div>
+          <div className="trade-graph">
+            <AdvancedRealTimeChart
+              theme="dark"
+              autosize
+              hide_side_toolbar
+              save_image={false}
+              allow_symbol_change
+              style="3"
+              backgroundColor="#0e0f12"
+              withdateranges={false}
+              symbol="EURUSD"
+            ></AdvancedRealTimeChart>
+          </div>
           <TradeForm />
         </div>
       </div>
