@@ -38,7 +38,9 @@
 }
 .rightDrawer {
   .ant-drawer-wrapper-body {
-    background: #0e0f12;
+    background: rgba(255, 255, 255, 0.13);
+    backdrop-filter: blur(50px);
+    border-radius: 0.9375rem 0rem 0rem 0.9375rem;
   }
   .ant-drawer-header-title {
     flex-direction: row-reverse;
@@ -76,4 +78,7 @@
 }
 :where(.css-dev-only-do-not-override-2rgkd4).ant-tabs .ant-tabs-ink-bar {
   background: #b2b4b8;
+}
+:where(.css-dev-only-do-not-override-2rgkd4).ant-drawer .ant-drawer-content {
+  background-color: transparent;
 }
