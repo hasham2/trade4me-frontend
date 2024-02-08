@@ -2,53 +2,121 @@
   display: flex;
   background: #0e0f12;
   .trade-section {
-    margin-left: 106px;
+    transition: margin-left 0.25s ease;
     background: #0e0f12;
     width: 100%;
     height: 100vh;
+    position: relative;
     .trade-content {
       display: flex;
+
+      @media (max-width: 767px) {
+        flex-direction: column;
+      }
       .trade-graph {
-        width: 86%;
-        height: calc(100vh - 139px);
+        width: 100%;
         overflow: hidden;
+
+        @media (max-width: 767px) {
+          height: 100%;
+        }
       }
     }
   }
   .ml-378 {
-    margin-left: 484px;
+    margin-left: 30.25rem;
+    transition: margin-left 0.25s ease;
   }
 }
 .ml-106 {
-  margin-left: 106px;
+  &.leftSubDrawer {
+    .ant-drawer-wrapper-body {
+      background: none;
+    }
+  }
   .ant-drawer-wrapper-body {
-    background: #08090a;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(35px);
+    border-radius: 0rem 0.9375rem 0.9375rem 0rem;
+  }
+  .ant-drawer-header {
+    flex-direction: row-reverse;
+    border-bottom: 0;
+
+    .ant-drawer-extra {
+      padding-left: 0.3125rem;
+      padding-right: 0.9375rem;
+
+      > div {
+        display: flex;
+        align-items: center;
+
+        svg {
+          width: 0.75rem;
+        }
+      }
+    }
   }
   .ant-drawer-header-title {
     flex-direction: row-reverse;
+
+    button {
+      svg {
+        width: 1.125rem;
+      }
+    }
   }
   .ant-drawer-title {
     color: #fff;
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: 1.875rem;
+    font-weight: 500;
   }
   p {
     color: #fff;
   }
 }
 .rightDrawer {
+  &.rightSubDrawer {
+    .ant-drawer-wrapper-body {
+      background: none;
+    }
+  }
   .ant-drawer-wrapper-body {
     background: rgba(255, 255, 255, 0.13);
-    backdrop-filter: blur(50px);
+    backdrop-filter: blur(30px);
     border-radius: 0.9375rem 0rem 0rem 0.9375rem;
+  }
+  .ant-drawer-header {
+    flex-direction: row-reverse;
+    border-bottom: 0;
+
+    .ant-drawer-extra {
+      padding-left: 0.3125rem;
+      padding-right: 0.9375rem;
+
+      > div {
+        display: flex;
+        align-items: center;
+
+        svg {
+          width: 0.75rem;
+        }
+      }
+    }
   }
   .ant-drawer-header-title {
     flex-direction: row-reverse;
+
+    button {
+      svg {
+        width: 1.125rem;
+      }
+    }
   }
   .ant-drawer-title {
     color: #fff;
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: 1.875rem;
+    font-weight: 500;
   }
 }
 
@@ -56,7 +124,7 @@
 .ant-tabs-bottom > .ant-tabs-nav::before,
 .ant-tabs-top > div > .ant-tabs-nav::before,
 .ant-tabs-bottom > div > .ant-tabs-nav::before {
-  border-bottom: 1px solid #545557;
+  border-bottom: 0.0625rem solid #545557;
 }
 .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
   color: #ffffff;

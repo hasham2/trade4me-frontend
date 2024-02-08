@@ -1,19 +1,26 @@
-import { CraetDownIcon, ProfileIcon } from "../../assets/icons";
+import {
+  CaretDownIcon,
+  DropUpIcon,
+  ProfileIcon,
+  WalletIcon,
+} from "../../assets/icons";
 import "./topbar.scss";
 
 interface TopbarProps {
+  isDrawerOpen: boolean;
   setIsRightDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setIsRightDrawerContent: React.Dispatch<React.SetStateAction<string | null>>;
   setIsDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setCurrentDrawer: React.Dispatch<
     React.SetStateAction<
-      "trades" | "market" | "events" | "help" | "convert" | null
+      "trades" | "market" | "events" | "help" | "assets" | null
     >
   >;
-  currentDrawer: "trades" | "market" | "events" | "help" | "convert" | null;
+  currentDrawer: "trades" | "market" | "events" | "help" | "assets" | null;
 }
 
 const Topbar: React.FunctionComponent<TopbarProps> = ({
+  isDrawerOpen,
   setIsRightDrawerOpen,
   setIsRightDrawerContent,
   setIsDrawerOpen,
@@ -21,13 +28,14 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
   currentDrawer,
 }) => {
   return (
-    <div className="topbarContainer">
+    <div className="topbarContainer" id="topbarContainer">
       <div
         className="conversionTab"
         onClick={() => {
-          setIsDrawerOpen(currentDrawer === "convert" ? false : true);
-          setCurrentDrawer("convert");
-          currentDrawer === "convert" && setCurrentDrawer(null);
+          setIsDrawerOpen(
+            isDrawerOpen && currentDrawer === "assets" ? false : true
+          );
+          setCurrentDrawer("assets");
         }}
       >
         <div className="convImg">
@@ -39,13 +47,9 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
         <div className="convDetails">
           <div className="topConv">
             <span className="currency">EUR/USD</span>
-            <span>•</span>
+            <span>OTC</span>
             <span className="percent">82%</span>
-            <span className="caretDown">
-              <CraetDownIcon />
-            </span>
           </div>
-          <div className="bottomConv">Fixed Time mode</div>
         </div>
       </div>
       <div className="payProfileTab">
@@ -56,12 +60,10 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
             setIsRightDrawerContent("account");
           }}
         >
-          <p className="value">Đ9.996.90</p>
-          <div className="flexDemo">
-            <span className="dem">Demo Account</span>
-            <span className="caretDown">
-              <CraetDownIcon />
-            </span>
+          <span className="dem">Demo Account</span>
+          <div className="amount">
+            <p className="value">Đ9.996.90</p>
+            <CaretDownIcon />
           </div>
         </div>
         <button
@@ -73,14 +75,61 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
         >
           Payments
         </button>
-        <button
-          className="profile"
+        <div className="profileButtons">
+          <button
+            className="dropup-icon"
+            onClick={() => {
+              setIsRightDrawerOpen(true);
+              setIsRightDrawerContent("profile");
+            }}
+          >
+            <DropUpIcon />
+          </button>
+          <button
+            className="profile"
+            onClick={() => {
+              setIsRightDrawerOpen(true);
+              setIsRightDrawerContent("profile");
+            }}
+          >
+            <ProfileIcon />
+          </button>
+        </div>
+      </div>
+
+      <div className="payProfileTab payProfileTabMobile">
+        <div className="profileButtons">
+          <button
+            className="profile"
+            onClick={() => {
+              setIsRightDrawerOpen(true);
+              setIsRightDrawerContent("profile");
+            }}
+          >
+            <ProfileIcon />
+          </button>
+        </div>
+        <div
+          className="demo"
           onClick={() => {
             setIsRightDrawerOpen(true);
-            setIsRightDrawerContent("profile");
+            setIsRightDrawerContent("account");
           }}
         >
-          <ProfileIcon />
+          <span className="dem">Demo Account</span>
+          <div className="amount">
+            <p className="value">Đ9.996.90</p>
+            <CaretDownIcon />
+          </div>
+        </div>
+        <button
+          onClick={() => {
+            setIsRightDrawerOpen(true);
+            setIsRightDrawerContent("payments");
+          }}
+          className="profile"
+        >
+          <WalletIcon />
         </button>
       </div>
     </div>

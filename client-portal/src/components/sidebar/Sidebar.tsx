@@ -7,35 +7,47 @@ import {
 } from "../../assets/icons";
 import "./sidebar.scss";
 
+type DrawerType = "trades" | "market" | "events" | "help" | "assets" | null;
+
 interface SidebarProps {
   setIsDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isDrawerOpen: boolean;
-  currentDrawer: "trades" | "market" | "events" | "help" | "convert" | null;
-  setCurrentDrawer: React.Dispatch<
-    React.SetStateAction<
-      "trades" | "market" | "events" | "help" | "convert" | null
-    >
-  >;
+  setIsLeftSubDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isLeftSubDrawerOpen: boolean;
+  id?: string;
+  currentDrawer: DrawerType;
+  setCurrentDrawer: React.Dispatch<React.SetStateAction<DrawerType>>;
 }
 
 const Sidebar: React.FunctionComponent<SidebarProps> = ({
   setIsDrawerOpen,
+  isDrawerOpen,
+  setIsLeftSubDrawerOpen,
+  isLeftSubDrawerOpen,
   currentDrawer,
   setCurrentDrawer,
+  id,
 }) => {
+  const onSelect = (activeDrawer: DrawerType) => {
+    if (isLeftSubDrawerOpen) {
+      setIsLeftSubDrawerOpen(false);
+    } else {
+      setIsDrawerOpen(
+        isDrawerOpen && currentDrawer === activeDrawer ? false : true
+      );
+    }
+    setCurrentDrawer(activeDrawer);
+  };
+
   return (
-    <div className="sidebar">
+    <div className="sidebar" id={id ? id : ""}>
       <div className="top">
         <div className="logo">
           <LogoIcon />
         </div>
         <button
-          onClick={() => {
-            setIsDrawerOpen(currentDrawer === "trades" ? false : true);
-            setCurrentDrawer("trades");
-            currentDrawer === "trades" && setCurrentDrawer(null);
-          }}
-          className={currentDrawer === "trades" ? "active" : ""}
+          onClick={() => onSelect("trades")}
+          className={isDrawerOpen && currentDrawer === "trades" ? "active" : ""}
         >
           <div className="icon">
             <TradesIcon />
@@ -43,12 +55,8 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({
           <p className="text">Trades</p>
         </button>
         <button
-          onClick={() => {
-            setIsDrawerOpen(currentDrawer === "market" ? false : true);
-            setCurrentDrawer("market");
-            currentDrawer === "market" && setCurrentDrawer(null);
-          }}
-          className={currentDrawer === "market" ? "active" : ""}
+          onClick={() => onSelect("market")}
+          className={isDrawerOpen && currentDrawer === "market" ? "active" : ""}
         >
           <div className="icon">
             <MarketIcon />
@@ -56,12 +64,8 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({
           <p className="text">Market</p>
         </button>
         <button
-          onClick={() => {
-            setIsDrawerOpen(currentDrawer === "events" ? false : true);
-            setCurrentDrawer("events");
-            currentDrawer === "events" && setCurrentDrawer(null);
-          }}
-          className={currentDrawer === "events" ? "active" : ""}
+          onClick={() => onSelect("events")}
+          className={isDrawerOpen && currentDrawer === "events" ? "active" : ""}
         >
           <div className="icon">
             <EventsIcon />
@@ -69,12 +73,8 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({
           <p className="text">Events</p>
         </button>
         <button
-          onClick={() => {
-            setIsDrawerOpen(currentDrawer === "help" ? false : true);
-            setCurrentDrawer("help");
-            currentDrawer === "help" && setCurrentDrawer(null);
-          }}
-          className={currentDrawer === "help" ? "active" : ""}
+          onClick={() => onSelect("help")}
+          className={isDrawerOpen && currentDrawer === "help" ? "active" : ""}
         >
           <div className="icon">
             <HelpIcon />

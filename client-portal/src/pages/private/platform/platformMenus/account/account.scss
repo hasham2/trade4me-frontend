@@ -1,0 +1,87 @@
+.accountsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+
+  .addIconContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .addIcon {
+      padding: 0.625rem 1.25rem;
+      border-radius: 0.3125rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+.accountCardWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.25s;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3125rem;
+
+  &.selected {
+    box-shadow: 0rem 0.125rem 0rem 0.125rem rgba(0, 0, 0, 0.05),
+      0rem 0.0625rem 0rem 0.0625rem inset rgba(39, 162, 255, 0.26);
+
+    .accountType {
+      color: #f9b42b !important;
+    }
+    .amount {
+      color: #ffffff !important;
+    }
+    .secAmount {
+      color: #ffffff !important;
+    }
+  }
+  .leftSide {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    .icon {
+      display: flex;
+      align-items: center;
+    }
+    .accountDeets {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      .accountType {
+        color: #fff;
+        font-size: 1.125rem;
+        font-weight: 500;
+        line-height: 1.75rem;
+      }
+      .amount {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.875rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 1.25rem;
+      }
+      .secAmount {
+        color: var(--white-white-50, rgba(255, 255, 255, 0.5));
+        font-size: 0.875rem;
+        font-weight: 400;
+        line-height: 1.25rem;
+      }
+    }
+  }
+  .suffixIcon {
+    display: flex;
+    align-items: center;
+  }
+  .tag {
+    border: 0.0625rem solid #1fbf75;
+    color: #1fbf75;
+    border-radius: 0.4375rem;
+    padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+    margin-right: 0.625rem;
+  }
+}

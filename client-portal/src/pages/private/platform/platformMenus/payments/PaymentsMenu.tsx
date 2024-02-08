@@ -1,33 +1,36 @@
+import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import {
-  TransactionIcon,
   WalletIcon,
   WithdrawIcon,
+  TransactionIcon,
 } from "../../../../../assets/icons";
 import "./paymentsMenu.scss";
 
-interface PaymentsMenuProps {}
+interface PaymentsMenuProps {
+  setIsRightSubDrawerOpen: (value: boolean) => void;
+  setIsRightSubDrawerContent: (value: string | null) => void;
+}
 
-const PaymentsMenu: React.FunctionComponent<PaymentsMenuProps> = () => {
+const PaymentsMenu: React.FunctionComponent<PaymentsMenuProps> = ({
+  setIsRightSubDrawerOpen,
+  setIsRightSubDrawerContent,
+}) => {
   return (
     <div className="paymentsMenu">
-      <button className="deposit">
-        <span>
-          <WalletIcon />
-        </span>
-        <span>Deposit</span>
-      </button>
-      <button>
-        <span>
-          <WithdrawIcon />
-        </span>
-        <span>Withdrawal</span>
-      </button>
-      <button>
-        <span>
-          <TransactionIcon />
-        </span>
-        <span>Transactions</span>
-      </button>
+      <MenuListCard title="Deposit" icon={<WalletIcon />} />
+      <MenuListCard title="Withdraw" icon={<WithdrawIcon />} />
+      <MenuListCard
+        title="Transfer"
+        icon={<TransactionIcon />}
+        onClick={() => {
+          setIsRightSubDrawerOpen(true);
+          setIsRightSubDrawerContent("transfer");
+        }}
+      />
+      <MenuListCard
+        title="Transaction"
+        icon={<img src="/menu-images/history-icon.png" alt="Transaction" />}
+      />
     </div>
   );
 };
