@@ -1,12 +1,12 @@
-import { Input as InputOriginal } from "antd";
-import "./input.scss";
+import { Input as InputOriginal, InputProps as OriginalInputProps } from "antd";
 import MainItemCard from "../mainItemCard/MainItemCard";
+import "./input.scss";
 
-interface InputProps {
-  placeholder?: string;
+interface InputProps extends OriginalInputProps {
   title?: string;
   className?: string;
   icon?: React.ReactNode;
+  suffixIcon?: React.ReactNode;
 }
 
 const Input: React.FunctionComponent<InputProps> = ({
@@ -14,6 +14,11 @@ const Input: React.FunctionComponent<InputProps> = ({
   title,
   className,
   icon,
+  suffixIcon,
+  defaultValue,
+  onChange,
+  type,
+  ...rest
 }) => {
   return (
     <MainItemCard
@@ -24,8 +29,15 @@ const Input: React.FunctionComponent<InputProps> = ({
       {icon ? <div className="inputIcon">{icon}</div> : null}
       <div className="inputContainer">
         {title ? <label>{title}</label> : null}
-        <InputOriginal placeholder={placeholder} />
+        <InputOriginal
+          placeholder={placeholder}
+          defaultValue={defaultValue}
+          onChange={onChange}
+          type={type}
+          {...rest}
+        />
       </div>
+      {suffixIcon ? <div className="suffixIcon">{suffixIcon}</div> : null}
     </MainItemCard>
   );
 };

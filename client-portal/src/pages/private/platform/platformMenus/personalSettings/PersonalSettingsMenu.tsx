@@ -1,28 +1,73 @@
+import { InfoCircleIcon } from "../../../../../assets/icons";
 import EnhanceSecurityCard from "../../../../../components/enhanceSecurityCard/EnhanceSecurityCard";
 import Input from "../../../../../components/input/Input";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import Upload from "../../../../../components/upload/Upload";
 import "./personalSettingsMenu.scss";
 
-interface PersonalSettingsMenuProps {}
+interface PersonalSettingsMenuProps {
+  setIsRightSubDrawerContent: (value: string | null) => void;
+}
 
 const PersonalSettingsMenu: React.FunctionComponent<
   PersonalSettingsMenuProps
-> = () => {
+> = ({ setIsRightSubDrawerContent }) => {
   return (
     <div className="personalSettingsMenu">
       <EnhanceSecurityCard />
 
       <div>
         <p className="menuSectionTitle">Personal</p>
-        <Input placeholder="Eneter your Name" title="Name" />
+        <Input
+          placeholder="Eneter your name"
+          title="Name"
+          defaultValue="Support"
+          type="text"
+          disabled
+          suffixIcon={
+            <div
+              className="infoIcon"
+              onClick={() => setIsRightSubDrawerContent("edit-name")}
+            >
+              <InfoCircleIcon />
+            </div>
+          }
+        />
         <Upload placeholder="Upload Profile Picture" />
       </div>
 
       <div>
         <p className="menuSectionTitle">Contacts</p>
-        <Input placeholder="Enter your email" title="Email" />
-        <Input placeholder="Enter your phonenumber" title="Phone number" />
+        <Input
+          placeholder="Enter your email"
+          title="Email"
+          defaultValue="support@moneybee.loan"
+          type="email"
+          disabled
+          suffixIcon={
+            <div
+              className="infoIcon"
+              onClick={() => setIsRightSubDrawerContent("confirm-email")}
+            >
+              <InfoCircleIcon />
+            </div>
+          }
+        />
+        <Input
+          placeholder="Enter your phonenumber"
+          title="Phone number"
+          defaultValue="(555) 555-1234"
+          type="phone"
+          disabled
+          suffixIcon={
+            <div
+              className="infoIcon"
+              onClick={() => setIsRightSubDrawerContent("confirm-phone")}
+            >
+              <InfoCircleIcon />
+            </div>
+          }
+        />
       </div>
 
       <div className="socialButtons">

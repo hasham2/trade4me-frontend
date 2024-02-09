@@ -26,6 +26,12 @@ import AssetsMenu from "./platformMenus/assets/AssetsMenu";
 import HelpCenter from "./platformMenus/helpCenter/HelpCenter";
 import SupportMenu from "./platformMenus/support/SupportMenu";
 import UserNotificationsMenu from "./platformMenus/userNotifications/UserNotificationsMenu";
+import ChangePassword from "./platformMenus/changePassword/ChangePassword";
+import EditName from "./platformMenus/editName/EditName";
+import ConfirmMail from "./platformMenus/confirmMail/ConfirmMail";
+import ConfirmPhone from "./platformMenus/confirmPhone/ConfirmPhone";
+import SelectAccount from "./platformMenus/selectAccount/SelectAccount";
+import WithdrawMenu from "./platformMenus/withdraw/WithdrawMenu";
 
 interface PlatformProps {}
 
@@ -274,6 +280,18 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               ? "Barcode"
               : rightSubDrawerContent === "user-notifications"
               ? "Notifications"
+              : rightSubDrawerContent === "change-password"
+              ? "Change Password"
+              : rightSubDrawerContent === "edit-name"
+              ? "Edit name"
+              : rightSubDrawerContent === "confirm-email"
+              ? "Confirm your email"
+              : rightSubDrawerContent === "confirm-phone"
+              ? "Confirm phone number"
+              : rightSubDrawerContent === "select-account"
+              ? "To:"
+              : rightSubDrawerContent === "withdraw"
+              ? "Withdraw"
               : ""
           }
           extra={
@@ -295,6 +313,32 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               </div>
             ) : rightSubDrawerContent === "notifications" ? (
               <div onClick={() => setIsRightSubDrawerContent("settings")}>
+                <ArrowLeftOS />
+              </div>
+            ) : rightSubDrawerContent === "change-password" ? (
+              <div onClick={() => setIsRightSubDrawerContent("settings")}>
+                <ArrowLeftOS />
+              </div>
+            ) : rightSubDrawerContent === "edit-name" ? (
+              <div
+                onClick={() => setIsRightSubDrawerContent("personalSettings")}
+              >
+                <ArrowLeftOS />
+              </div>
+            ) : rightSubDrawerContent === "confirm-email" ? (
+              <div
+                onClick={() => setIsRightSubDrawerContent("personalSettings")}
+              >
+                <ArrowLeftOS />
+              </div>
+            ) : rightSubDrawerContent === "confirm-phone" ? (
+              <div
+                onClick={() => setIsRightSubDrawerContent("personalSettings")}
+              >
+                <ArrowLeftOS />
+              </div>
+            ) : rightSubDrawerContent === "select-account" ? (
+              <div onClick={() => setIsRightSubDrawerContent("transfer")}>
                 <ArrowLeftOS />
               </div>
             ) : (
@@ -325,11 +369,15 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           ) : rightSubDrawerContent === "twofactor" ? (
             <TwoFactorMenu />
           ) : rightSubDrawerContent === "personalSettings" ? (
-            <PersonalSettingsMenu />
+            <PersonalSettingsMenu
+              setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+            />
           ) : rightSubDrawerContent === "appearance" ? (
             <AppearanceMenu />
           ) : rightSubDrawerContent === "transfer" ? (
-            <TransferMenu />
+            <TransferMenu
+              setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+            />
           ) : rightSubDrawerContent === "trading" ? (
             <TradingMenu />
           ) : rightSubDrawerContent === "notifications" ? (
@@ -338,6 +386,18 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             <BarcodeMenu />
           ) : rightSubDrawerContent === "user-notifications" ? (
             <UserNotificationsMenu />
+          ) : rightSubDrawerContent === "change-password" ? (
+            <ChangePassword />
+          ) : rightSubDrawerContent === "edit-name" ? (
+            <EditName />
+          ) : rightSubDrawerContent === "confirm-email" ? (
+            <ConfirmMail />
+          ) : rightSubDrawerContent === "confirm-phone" ? (
+            <ConfirmPhone />
+          ) : rightSubDrawerContent === "select-account" ? (
+            <SelectAccount />
+          ) : rightSubDrawerContent === "withdraw" ? (
+            <WithdrawMenu />
           ) : (
             <></>
           )}
